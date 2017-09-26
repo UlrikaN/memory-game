@@ -25,7 +25,11 @@ class Game extends React.Component {
   setupGame = () => {
     const doublePhotos = photos.concat(photos)
     shuffle(doublePhotos)
-    const cardSetup = doublePhotos.map((card) => ({src: card}))
+    const cardSetup = doublePhotos.map((card) => ({
+      src: card,
+      isFlipped: false,
+      isClicked: false
+    }))
     return cardSetup
   }
 
@@ -35,7 +39,11 @@ class Game extends React.Component {
         <h1>Ulrika's memory game</h1>
         <div className="cardArea">
           {this.state.cards.map((card) => (
-            <Card src={card.src}/>
+            <Card
+              src={card.src}
+              isFlipped={card.isFlipped}
+              isClicked={card.isClicked}
+            />
           ))}
         </div>
       </div>
