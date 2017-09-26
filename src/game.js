@@ -1,21 +1,32 @@
 import React from "react"
 import './game.css'
 import Card from "./card"
+import shuffle from 'shuffle-array'
+
+const photos = [
+  "/images/bild1.jpg",
+  "/images/bild2.jpg",
+  "/images/bild3.jpg",
+  "/images/bild4.jpg",
+  "/images/bild5.jpg",
+  "/images/bild6.jpg",
+  "/images/bild7.jpg",
+  "/images/bild8.jpg"]
 
 class Game extends React.Component {
 
-  state = {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cards: this.setupGame()
+    }
+  }
 
-    cards: [
-      {src: "/images/bild1.jpg"},
-      {src: "/images/bild2.jpg"},
-      {src: "/images/bild3.jpg"},
-      {src: "/images/bild4.jpg"},
-      {src: "/images/bild5.jpg"},
-      {src: "/images/bild6.jpg"},
-      {src: "/images/bild7.jpg"},
-      {src: "/images/bild8.jpg"}
-    ]
+  setupGame = () => {
+    const doublePhotos = photos.concat(photos)
+    shuffle(doublePhotos)
+    const cardSetup = doublePhotos.map((card) => ({src: card}))
+    return cardSetup
   }
 
   render() {
