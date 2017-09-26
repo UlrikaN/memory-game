@@ -28,7 +28,8 @@ class Game extends React.Component {
     const cardSetup = doublePhotos.map((card) => ({
       src: card,
       isFlipped: false,
-      isClicked: false
+      isClicked: false,
+      isMatched: false
     }))
     return cardSetup
   }
@@ -43,6 +44,7 @@ class Game extends React.Component {
               src={card.src}
               isFlipped={card.isFlipped}
               isClicked={card.isClicked}
+              isMatched={card.isMatched}
             />
           ))}
         </div>
