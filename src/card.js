@@ -4,13 +4,13 @@ import './card.css'
 class Card extends React.Component {
 
   handleClick = () => {
-    alert(this.props.isFlipped)
+    this.props.onClick()
   }
 
   render() {
     return (
       <div className="card" onClick={this.handleClick}>
-        <img src= {this.props.isFlipped ? this.props.src : "/images/bild.jpg"}/>
+        <img src={this.props.isFlipped ? this.props.src : "/images/bild.jpg"}/>
       </div>
     )
   }

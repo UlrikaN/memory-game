@@ -29,21 +29,31 @@ class Game extends React.Component {
       src: card,
       isFlipped: false,
       isMatched: false
-      //id:
     }))
     return cardSetup
+  }
+
+  handleCardClicked = () => {
+
+//    this.setState({cards: })
+  }
+
+  resetButton = () => {
+    this.setState({cards: this.setupGame()})
   }
 
   render() {
     return (
       <div className="game">
         <h1>Ulrika's memory game</h1>
+        <button onClick={this.resetButton}>Reset!</button>
         <div className="cardArea">
           {this.state.cards.map((card) => (
             <Card
               src={card.src}
               isFlipped={card.isFlipped}
               isMatched={card.isMatched}
+              onClick={this.handleCardClicked}
             />
           ))}
         </div>
