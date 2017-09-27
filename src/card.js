@@ -1,10 +1,19 @@
 import React from "react"
 import './card.css'
 
-const Card = (props) => (
-  <div className="card" onClick={props.onClick}>
-    <img src={props.src}/>
-  </div>
-)
+class Card extends React.Component {
+
+  handleClick = () => {
+    return alert("Hi " + this.props.src)
+  }
+
+  render() {
+    return (
+      <div className="card" onClick={this.handleClick}>
+        <img src= {this.props.isFlipped ? this.props.src : "/images/bild.jpg"}/>
+      </div>
+    )
+  }
+}
 
 export default Card
