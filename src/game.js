@@ -34,10 +34,6 @@ class Game extends React.Component {
     return cardSetup
   }
 
-  handleCardClick = () => {
-    return alert("Hi!")
-  }
-
   render() {
     return (
       <div className="game">
@@ -48,7 +44,6 @@ class Game extends React.Component {
               src={card.src}
               isFlipped={card.isFlipped}
               isMatched={card.isMatched}
-              onClick={this.handleCardClick}
             />
           ))}
         </div>
