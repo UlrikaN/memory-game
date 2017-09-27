@@ -33,7 +33,8 @@ class Game extends React.Component {
     return cardSetup
   }
 
-  handleCardClicked = () => {
+  handleCardClicked = (cardSrc) => {
+    alert(cardSrc)
     const newCardState = this.state.cards.map((card) => {
       card.isFlipped = true
     return card

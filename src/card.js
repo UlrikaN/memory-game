@@ -4,7 +4,7 @@ import './card.css'
 class Card extends React.Component {
 
   handleClick = () => {
-    this.props.onClick()
+    this.props.onClick(this.props.src)
   }
 
   render() {
