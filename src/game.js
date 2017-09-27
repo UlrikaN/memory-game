@@ -2,6 +2,7 @@ import React from "react"
 import './game.css'
 import Card from "./card"
 import shuffle from 'shuffle-array'
+import uuidv4 from "uuid/v4"
 
 const photos = [
   "/images/bild1.jpg",
@@ -28,19 +29,21 @@ class Game extends React.Component {
     const cardSetup = doublePhotos.map((card) => ({
       src: card,
       isFlipped: false,
-      isMatched: false
+      isMatched: false,
+      id: uuidv4()
+
     }))
     return cardSetup
   }
 
-  handleCardClicked = (cardSrc) => {
-    alert(cardSrc)
+  handleCardClicked = (cardId) => {
     const newCardState = this.state.cards.map((card) => {
-      card.isFlipped = true
+      if (card.id === cardId) {
+        card.isFlipped = true
+      }
     return card
   })
     this.setState({cards: newCardState})
-    //this.setState({cards: })
   }
 
   resetButton = () => {
@@ -55,10 +58,12 @@ class Game extends React.Component {
         <div className="cardArea">
           {this.state.cards.map((card) => (
             <Card
+              key={card.id}
+              id={card.id}
               src={card.src}
+              whenClicked={this.handleCardClicked}
               isFlipped={card.isFlipped}
               isMatched={card.isMatched}
-              onClick={this.handleCardClicked}
             />
           ))}
         </div>
