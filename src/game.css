@@ -4,10 +4,12 @@
 }
 
 button {
-  background-color: #44625e;
-  border: none;
-  color: #c4bbad;
+  background-color: #c4bbad;
+  border: solid;
+  border-color: #44625e;
+  color: #44625e;
   font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   text-align: center;
   display: inline-block;
 }

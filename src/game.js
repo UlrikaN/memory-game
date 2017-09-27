@@ -34,8 +34,12 @@ class Game extends React.Component {
   }
 
   handleCardClicked = () => {
-
-//    this.setState({cards: })
+    const newCardState = this.state.cards.map((card) => {
+      card.isFlipped = true
+    return card
+  })
+    this.setState({cards: newCardState})
+    //this.setState({cards: })
   }
 
   resetButton = () => {
