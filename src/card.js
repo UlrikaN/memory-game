@@ -4,7 +4,7 @@ import './card.css'
 class Card extends React.Component {
 
   handleClick = () => {
-    return alert("Hi " + this.props.src)
+    alert(this.props.isFlipped)
   }
 
   render() {
