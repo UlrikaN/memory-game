@@ -28,10 +28,14 @@ class Game extends React.Component {
     const cardSetup = doublePhotos.map((card) => ({
       src: card,
       isFlipped: false,
-      isClicked: false,
       isMatched: false
+      //id:
     }))
     return cardSetup
+  }
+
+  handleCardClick = () => {
+    return alert("Hi!")
   }
 
   render() {
@@ -43,8 +47,8 @@ class Game extends React.Component {
             <Card
               src={card.src}
               isFlipped={card.isFlipped}
-              isClicked={card.isClicked}
               isMatched={card.isMatched}
+              onClick={this.handleCardClick}
             />
           ))}
         </div>
