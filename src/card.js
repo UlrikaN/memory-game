@@ -7,13 +7,18 @@ class Card extends React.Component {
     if (this.props.isFlipped) {
       return "card"
     }
+    else if (this.props.isMatched) {
+      return "card Gone"
+    }
     else {
       return "card Back"
     }
   }
 
   handleClick = () => {
-    this.props.whenClicked(this.props.id)
+    if (!this.props.isMatched) {
+      this.props.whenClicked(this.props.id)
+    }
   }
 
   render() {

@@ -49,22 +49,39 @@ class Game extends React.Component {
 
   handleFlippedCards = () => {
     const flippedCards = this.state.cards.filter((card) => {if (card.isFlipped) {return card}})
-    console.log(flippedCards)
 
     setTimeout(() => {
+      let scoreChange = 0
+
       if (flippedCards.length >= 2) {
-        const newCardState = this.state.cards.map((card) => {
-          card.isFlipped = false
-          return card
-        })
-        this.setState({cards: newCardState})
-      }}, 1000
+        let newCardState = this.state.cards
+
+        if (flippedCards[0].src != flippedCards[1].src) {
+          newCardState = this.state.cards.map((card) => {
+            card.isFlipped = false
+            return card
+          })
+          scoreChange = scoreChange - 1
+        }
+        else {
+          newCardState = this.state.cards.map((card) => {
+            if (card.isFlipped) {
+              card.isMatched = true
+              card.isFlipped = false
+            }
+            return card
+          })
+          scoreChange = scoreChange + 1
+        }
+
+        this.setState({points: this.state.points + scoreChange, cards: newCardState})
+      }},
+      1000
     )
   }
 
   resetButton = () => {
-    this.setState({cards: this.setupGame()})
-    this.setState({points: 0})
+    this.setState({cards: this.setupGame(), points: 0})
   }
 
   render() {
