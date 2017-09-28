@@ -16,7 +16,7 @@ class Card extends React.Component {
   }
 
   handleClick = () => {
-    if (!this.props.isMatched) {
+    if (!this.props.isMatched && !this.props.isFlipped) {
       this.props.whenClicked(this.props.id)
     }
   }

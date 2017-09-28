@@ -22,7 +22,11 @@ class Timer extends React.Component {
   render() {
     const elapsed = Math.round(this.state.elapsed / 100)
     let seconds = (elapsed / 10).toFixed(1)
-    return <p>You have been playing for <b>{seconds} seconds</b></p>
+    return (
+      <div>
+        <p>You have been playing for <b>{seconds} seconds</b></p>
+      </div>
+    )
   }
 }
 

@@ -4,15 +4,16 @@ import Card from "./card"
 import shuffle from 'shuffle-array'
 import uuidv4 from "uuid/v4"
 import Timer from "./timer"
+import Highscore from "./highscore"
 
 const photos = [
   "/images/bild1.jpg",
-  "/images/bild2.jpg",
-  "/images/bild3.jpg",
-  "/images/bild4.jpg",
-  "/images/bild5.jpg",
-  "/images/bild6.jpg",
-  "/images/bild7.jpg",
+  //"/images/bild2.jpg",
+  //"/images/bild3.jpg",
+  //"/images/bild4.jpg",
+  //"/images/bild5.jpg",
+  //"/images/bild6.jpg",
+  //"/images/bild7.jpg",
   "/images/bild8.jpg"]
 
 class Game extends React.Component {
@@ -21,7 +22,9 @@ class Game extends React.Component {
     super(props)
     this.state = {
       cards: this.setupGame(),
-      points: 0
+      points: 0,
+      clicks: 0,
+      welcome: true
     }
   }
 
@@ -55,7 +58,7 @@ class Game extends React.Component {
       return card
     })
 
-    this.setState({cards: newCardState})
+    this.setState({cards: newCardState, clicks: this.state.clicks + 1})
     this.handleFlippedCards()
   }
 
@@ -94,7 +97,11 @@ class Game extends React.Component {
   }
 
   resetButton = () => {
-    return this.setState({cards: this.setupGame(), points: 0})
+    return this.setState({cards: this.setupGame(), points: 0, clicks: 0, welcome: true})
+  }
+
+  startButton = () => {
+    return this.setState({welcome: false})
   }
 
   render() {
@@ -104,12 +111,27 @@ class Game extends React.Component {
       }
       else {
         return false
-      }})
-    if (allCards.length > 0) {
+      }
+    })
+
+    if (this.state.welcome) {
+      return (
+        <div className="game">
+          <h1>Ulrika's memory game</h1>
+          <div className="wrapper">
+            <h3> Welcome </h3>
+            <h2> How many unique cards do you wish to memorise? (1-8) </h2>
+            <button className="success" onClick={this.startButton}>Yes!</button>
+          </div>
+        </div>
+      )
+    }
+    else if (allCards.length > 0) {
       return (
         <div className="game">
           <h1>Ulrika's memory game</h1>
           <p>Points: {this.state.points}</p>
+          <p>Cards turned: {this.state.clicks}</p>
           <Timer start={Date.now()}/>
           <button className = "reset" onClick={this.resetButton}>Reset!</button>
           <div className="cardArea">
@@ -132,10 +154,12 @@ class Game extends React.Component {
         <div className="game">
           <h1>Ulrika's memory game</h1>
           <p>Points: {this.state.points}</p>
+          <p>Cards turned: {this.state.clicks}</p>
           <div className="wrapper">
             <h2> Success! </h2>
             <h3> Play again? </h3>
             <button className="success" onClick={this.resetButton}>Yes!</button>
+            <Highscore />
           </div>
         </div>
       )
