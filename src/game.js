@@ -71,7 +71,7 @@ class Game extends React.Component {
             }
             return card
           })
-          scoreChange = scoreChange + 1
+          scoreChange = scoreChange + 2
         }
 
         this.setState({points: this.state.points + scoreChange, cards: newCardState})
