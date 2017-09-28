@@ -27,8 +27,8 @@ class Game extends React.Component {
   setupGame = () => {
     const doublePhotos = photos.concat(photos)
     shuffle(doublePhotos)
-    const cardSetup = doublePhotos.map((card) => ({
-      src: card,
+    const cardSetup = doublePhotos.map((url) => ({
+      src: url,
       isFlipped: false,
       isMatched: false,
       id: uuidv4()
@@ -36,13 +36,20 @@ class Game extends React.Component {
     return cardSetup
   }
 
-  handleCardClicked = (cardId) => {
+  handleCardClicked = (clickedCardId) => {
     const newCardState = this.state.cards.map((card) => {
-      if (card.id === cardId) {
-        card.isFlipped = true
+
+      const flippedCards = this.state.cards.filter((card) => {if (card.isFlipped) {return card}})
+
+      if (flippedCards.length < 2) {
+        if (card.id === clickedCardId) {
+          card.isFlipped = true
+        }
       }
+
       return card
     })
+
     this.setState({cards: newCardState})
     this.handleFlippedCards()
   }
