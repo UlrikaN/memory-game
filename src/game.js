@@ -19,7 +19,8 @@ class Game extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      cards: this.setupGame()
+      cards: this.setupGame(),
+      points: 0
     }
   }
 
@@ -31,7 +32,6 @@ class Game extends React.Component {
       isFlipped: false,
       isMatched: false,
       id: uuidv4()
-
     }))
     return cardSetup
   }
@@ -41,6 +41,7 @@ class Game extends React.Component {
       if (card.id === cardId) {
         card.isFlipped = true
       }
+
     return card
   })
     this.setState({cards: newCardState})
@@ -48,12 +49,14 @@ class Game extends React.Component {
 
   resetButton = () => {
     this.setState({cards: this.setupGame()})
+    this.setState({points: 0})
   }
 
   render() {
     return (
       <div className="game">
         <h1>Ulrika's memory game</h1>
+        <p>Points: {this.state.points}</p>
         <button onClick={this.resetButton}>Reset!</button>
         <div className="cardArea">
           {this.state.cards.map((card) => (
