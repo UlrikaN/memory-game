@@ -41,10 +41,25 @@ class Game extends React.Component {
       if (card.id === cardId) {
         card.isFlipped = true
       }
-
-    return card
-  })
+      return card
+    })
     this.setState({cards: newCardState})
+    this.handleFlippedCards()
+  }
+
+  handleFlippedCards = () => {
+    const flippedCards = this.state.cards.filter((card) => {if (card.isFlipped) {return card}})
+    console.log(flippedCards)
+
+    setTimeout(() => {
+      if (flippedCards.length >= 2) {
+        const newCardState = this.state.cards.map((card) => {
+          card.isFlipped = false
+          return card
+        })
+        this.setState({cards: newCardState})
+      }}, 1000
+    )
   }
 
   resetButton = () => {
