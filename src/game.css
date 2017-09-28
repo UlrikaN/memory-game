@@ -1,9 +1,21 @@
-
 .cardArea {
   margin-left: 5%;
 }
 
-button {
+h2 {
+  font-size: 200%;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.reset {
   background-color: #c4bbad;
   border: solid;
   border-color: #44625e;
@@ -11,6 +23,18 @@ button {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   text-align: center;
+}
+
+.success {
+  background-color: #c4bbad;
+  border: solid;
+  border-color: #44625e;
+  color: #44625e;
+  font-family: 'Raleway', sans-serif;
+  font-size: 150%;
+  padding: 2%;
+  font-weight: bold;
+  align-self: center;
   display: inline-block;
 }
 
