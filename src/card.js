@@ -24,7 +24,7 @@ class Card extends React.Component {
   render() {
     return (
       <div className={this.getClassName()} onClick={this.handleClick}>
-        <img src={this.props.isFlipped ? this.props.src : "/images/bild.jpg"} alt="A memory card"/>
+        <img src={this.props.src} alt="A memory card"/>
       </div>
     )
   }

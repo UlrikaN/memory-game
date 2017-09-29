@@ -1,14 +1,35 @@
 .card {
   width: 100px;
   height: 100px;
-  padding: 3px;
+  padding: 2px;
   margin: 2px;
   display: inline-block;
   background: #c4bbad;
+  background-image: url("/images/bild.jpg");
+  background-size: 104px;
+  border: solid;
+  border-width: 0.5px;
+  border-color: #c4bbad;
+}
+
+.card:hover {
+  border: solid;
+  border-width: 0.5px;
+  border-color: #44625e;
+}
+
+.card.Back img {
+  visibility: hidden;
+  background-image: show;
 }
 
 .Gone {
   background: #b2adc4;
+  border-color: #b2adc4;
+}
+
+.Gone:hover {
+  border-color: #b2adc4;
 }
 
 .card img {
@@ -24,8 +45,9 @@
 	.card {
     width: 150px;
     height: 150px;
-    padding: 4px;
+    padding: 3px;
     margin: 3px;
+    background-size: 156px;
   }
 }
 
@@ -33,7 +55,8 @@
 	.card {
     width: 150px;
     height: 150px;
-    padding: 5px;
-    margin: 5px;
+    padding: 3px;
+    margin: 6px;
+    background-size: 156px;
   }
 }
