@@ -134,7 +134,7 @@ class Game extends React.Component {
             <h3> How many unique cards do you wish to memorise? (1-8) </h3>
             <form onSubmit={this.handleSubmit}>
               <label>
-                Number:
+                <p>Number of unique cards: </p>
                 <input className="numberBox" type="number" min="1" max={photos.length} value={this.state.value} onChange={this.handleChange} />
               </label>
               <input className="numberSubmit" type="submit" value="Start" onClick={this.startButton} />

@@ -11,6 +11,10 @@ h3 {
   text-align: center;
 }
 
+p {
+  margin-bottom: 1%;
+}
+
 .wrapper {
   text-align: center;
 }
@@ -54,6 +58,7 @@ h3 {
   border: solid;
   border-color: #44625e;
   width: 10%;
+  text-align: center;
 }
 
 .numInp {
