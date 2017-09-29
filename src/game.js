@@ -5,16 +5,15 @@ import shuffle from 'shuffle-array'
 import uuidv4 from "uuid/v4"
 import Timer from "./timer"
 import Highscore from "./highscore"
-import NumericInput from "react-numeric-input"
 
 const photos = [
   "/images/bild1.jpg",
-  //"/images/bild2.jpg",
-  //"/images/bild3.jpg",
-  //"/images/bild4.jpg",
-  //"/images/bild5.jpg",
-  //"/images/bild6.jpg",
-  //"/images/bild7.jpg",
+  "/images/bild2.jpg",
+  "/images/bild3.jpg",
+  "/images/bild4.jpg",
+  "/images/bild5.jpg",
+  "/images/bild6.jpg",
+  "/images/bild7.jpg",
   "/images/bild8.jpg"]
 
 class Game extends React.Component {
@@ -22,16 +21,22 @@ class Game extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      cards: this.setupGame(),
+      cards: this.setupGame(photos.length),
       points: 0,
       clicks: 0,
       welcome: true,
-      timerStarted: false
+      gameTime: 0,
+      value: 0
     }
   }
 
-  setupGame = () => {
-    const doublePhotos = photos.concat(photos)
+  handleChange = (event) => {
+    return this.setState({cards: this.setupGame(event.target.value), value: event.target.value})
+  }
+
+  setupGame = (uniqueCards) => {
+    const chosenPhotos = photos.slice(0, uniqueCards)
+    const doublePhotos = chosenPhotos.concat(chosenPhotos)
     shuffle(doublePhotos)
     const cardSetup = doublePhotos.map((url) => ({
       src: url,
@@ -106,6 +111,10 @@ class Game extends React.Component {
     return this.setState({welcome: false})
   }
 
+  handleTimer = (time) => {
+    return this.setState({gameTime: time})
+  }
+
   render() {
     const allCards = this.state.cards.filter((item) => {
       if (!item.isMatched) {
@@ -123,8 +132,13 @@ class Game extends React.Component {
           <div className="wrapper">
             <h2> Welcome </h2>
             <h3> How many unique cards do you wish to memorise? (1-8) </h3>
-            <NumericInput className="numInp" min={1} max={8} value={4}/>
-            <button className="success" onClick={this.startButton}>Yes!</button>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Number:
+                <input className="numberBox" type="number" min="1" max={photos.length} value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <input className="numberSubmit" type="submit" value="Start" onClick={this.startButton} />
+            </form>
           </div>
         </div>
       )
@@ -135,7 +149,7 @@ class Game extends React.Component {
           <h1>Ulrika's memory game</h1>
           <p>Points: {this.state.points}</p>
           <p>Cards turned: {this.state.clicks}</p>
-          <Timer />
+          <Timer onUpdate={this.handleTimer}/>
           <button className = "reset" onClick={this.resetButton}>Reset!</button>
           <div className="cardArea">
             {this.state.cards.map((card) => (
@@ -158,11 +172,11 @@ class Game extends React.Component {
           <h1>Ulrika's memory game</h1>
           <p>Points: {this.state.points}</p>
           <p>Cards turned: {this.state.clicks}</p>
+          <p>Time elapsed: {this.state.gameTime} seconds</p>
           <div className="wrapper">
             <h2> Success! </h2>
             <h3> Play again? </h3>
             <button className="success" onClick={this.resetButton}>Yes!</button>
-            <Highscore />
           </div>
         </div>
       )

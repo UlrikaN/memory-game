@@ -37,6 +37,25 @@ h3 {
   align-self: center;
 }
 
+.numberSubmit {
+  background-color: #c4bbad;
+  border: solid;
+  border-color: #44625e;
+  color: #44625e;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.numberBox {
+  background-color: #c4bbad;
+  color: #44625e;
+  font-family: 'Raleway', sans-serif;
+  border: solid;
+  border-color: #44625e;
+  width: 10%;
+}
+
 .numInp {
   background-color: #c4bbad;
   border: solid;

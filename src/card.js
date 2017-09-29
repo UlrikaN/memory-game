@@ -5,7 +5,7 @@ class Card extends React.Component {
 
   getClassName = () => {
     if (this.props.isFlipped) {
-      return "card"
+      return "card Front"
     }
     else if (this.props.isMatched) {
       return "card Gone"

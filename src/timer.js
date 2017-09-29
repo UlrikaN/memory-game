@@ -17,7 +17,9 @@ class Timer extends React.Component {
   }
 
   tick = () => {
-    this.setState({elapsed: new Date() - this.start})
+    const newTime = new Date() - this.start
+    const newTimeSeconds = (Math.round(newTime / 100) / 10 ).toFixed(1)
+    this.setState({elapsed: newTime}, () => {this.props.onUpdate(newTimeSeconds)})
   }
 
   render() {
