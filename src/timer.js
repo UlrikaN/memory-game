@@ -9,6 +9,7 @@ class Timer extends React.Component {
 
   componentDidMount = () => {
     this.timer = setInterval(this.tick, 50)
+    this.start = Date.now()
   }
 
   componentWillUnmount = () => {
@@ -16,7 +17,7 @@ class Timer extends React.Component {
   }
 
   tick = () => {
-    this.setState({elapsed: new Date() - this.props.start})
+    this.setState({elapsed: new Date() - this.start})
   }
 
   render() {

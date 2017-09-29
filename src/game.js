@@ -5,6 +5,7 @@ import shuffle from 'shuffle-array'
 import uuidv4 from "uuid/v4"
 import Timer from "./timer"
 import Highscore from "./highscore"
+import NumericInput from "react-numeric-input"
 
 const photos = [
   "/images/bild1.jpg",
@@ -24,7 +25,8 @@ class Game extends React.Component {
       cards: this.setupGame(),
       points: 0,
       clicks: 0,
-      welcome: true
+      welcome: true,
+      timerStarted: false
     }
   }
 
@@ -119,8 +121,9 @@ class Game extends React.Component {
         <div className="game">
           <h1>Ulrika's memory game</h1>
           <div className="wrapper">
-            <h3> Welcome </h3>
-            <h2> How many unique cards do you wish to memorise? (1-8) </h2>
+            <h2> Welcome </h2>
+            <h3> How many unique cards do you wish to memorise? (1-8) </h3>
+            <NumericInput className="numInp" min={1} max={8} value={4}/>
             <button className="success" onClick={this.startButton}>Yes!</button>
           </div>
         </div>
@@ -132,7 +135,7 @@ class Game extends React.Component {
           <h1>Ulrika's memory game</h1>
           <p>Points: {this.state.points}</p>
           <p>Cards turned: {this.state.clicks}</p>
-          <Timer start={Date.now()}/>
+          <Timer />
           <button className = "reset" onClick={this.resetButton}>Reset!</button>
           <div className="cardArea">
             {this.state.cards.map((card) => (

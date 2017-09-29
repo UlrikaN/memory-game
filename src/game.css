@@ -35,7 +35,17 @@ h3 {
   padding: 2%;
   font-weight: bold;
   align-self: center;
-  display: inline-block;
+}
+
+.numInp {
+  background-color: #c4bbad;
+  border: solid;
+  border-color: #44625e;
+  color: #44625e;
+  font-family: 'Raleway', sans-serif;
+  padding: 2%;
+  font-weight: bold;
+  align-self: center;
 }
 
 @media only screen and (min-width: 900px) {
